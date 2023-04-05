@@ -1,0 +1,192 @@
+{% extends 'app002/base.html' %}
+
+{% block title %}Item filters{% endblock %}
+
+{% block content %}
+<div class="block lg:hidden">
+  <div style="width: 80%; text-align: center; margin-left:10%;">
+      <div class=" m-3">
+          <form method="get" class="my-10" action="{% url 'item:multiple_filter_items' %}">
+                <div class="grid grid-cols-2 gap-0" style="grid-template-columns: 80% 20%;">
+                    <input name="query_two_three" value="{{ query_two_three }}" class="w-full py-2 px-6" style="border: 1px solid black; border-top-left-radius: 5px; border-bottom-left-radius: 5px;" type="text" placeholder="Find anything...">
+                    <button id="test-button" type="submit"><i class="fa fa-search text-yellow-700 w-full hover:text-green-900 py-2 text-lg bg-white" style="border: 1px solid black; border-top-right-radius: 5px; border-bottom-right-radius: 5px;"></i></button>
+                </div>
+                <div class="grid grid-cols-2 gap-0">
+                    <a href="{% url 'item:multiple_filter_items' %}" class="mt-1 ml-0 w-full py-2 px-3 text-lg bg-red-200 hover:cursor-pointer hover:bg-red-700 hover:text-white text-black rounded-xl">Clear search</a>
+                    <a></a>
+                </div>
+          </form>
+
+          <hr class="my-3">
+
+          <div class="grid grid-cols-2 gap-0 my-3 " style="grid-template-columns: 50% 50%;">
+              <div class="w-full">
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-1">Filter Category</button>
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-1">Filter name</button>
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-1">Filter Price</button>
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-1">Filter Boutique</button>
+                  <button class="py-2  text-semibold bg-gray-200 w-full mt-1 mb-5">Filter Address</button>
+                  <a href="{% url 'item:multiple_filter_items' %}" class="py-3 text-right w-full px-3 text-semibold rounded-lg bg-red-200 w-full mt-1 mb-3 hover:cursor-pointer hover:bg-red-700 hover:text-white">Clear filter</a>
+              </div>
+              <div class="w-full">
+
+                  <form method="get" id="search-form2-1" action="{% url 'item:multiple_filter_items' %}">
+                      <select name="category_id" style="width: 100%; border 1px solid black;" class="py-2 px-6 my-1">
+
+                        {% for category in categories %}
+                                    {% if category.id == category_id %}
+                          <option value="{{ category.id }}">{{ category.name }}</option>
+                                    {% endif %}
+                         {% endfor %}
+                        {% for category in categories %}
+                          <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                      </select>
+                      <input name="query_two_one" type="text" value="{{ query_two_one }}" style="width: 100%; border 1px solid black;" class="py-2 px-6 my-1" placeholder="eg. Shoes">
+                      <input name="query_two_two" type="text" value="{{ query_two_two }}" style="width: 100%; border 1px solid black;" class="py-2 px-6 my-1" placeholder="eg. 20-25">
+                      <input name="" type="text" value="" style="width: 100%; border 1px solid black;" class="py-2 px-6 my-1" placeholder="eg. 20-25">
+                      <input name="" type="text" value="" style="width: 100%; border 1px solid black;" class="py-2 px-6 mt-1 mb-1" placeholder="eg. 20 or 20-25">
+                      <button  type="submit" class="mt-1 ml-0 w-3/4 py-2 px-8 text-lg bg-green-500 hover:cursor-pointer hover:bg-green-900 hover:text-white text-black rounded-xl">Filter</button>
+                  </form>
+              </div>
+          </div>
+
+          <hr class="my-2">
+
+          <p class=" font-semibold text-xl mb-2">Categories List</p>
+
+          <div>
+              {% for category in categories %}
+                    <a href="{% url 'item:multiple_filter_items' %}?category_id={{ category.id }}">
+                       <div class=" grid grid-cols-2 gap-0 py-2 px-6 bg-gray-200 hover:bg-gray-400 {% if category.id == category_id %} bg-gray-700 text-white {% endif %}">
+                            <p class="text-left">{{ category.name }}</p>
+                            <p class="text-right">{{ category.items.count }} items</p>
+                       </div>
+                    </a>
+              {% endfor %}
+          </div>
+      </div>
+      <div class="w-full">
+          <div class="grid grid-cols-1 gap-3" id="items-container">
+            {% for item in items %}
+                <div class="my-3" id="items-to-filter">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img src="{{ item.image.url }}" class="rounded-t-lg">
+                        </div>
+                        <div class="p-3 bg-teal-500 rounded-b-lg">
+                            <div class="grid grid-cols-2 gap-0">
+                                <span class="text-black-500 text-left"><i class="fa-solid fa-location-dot"></i>Butembo</span>
+                                <span class="text-black-500 text-right">@{{ item.created_by }}</span>
+                            </div>
+                            <h2 class="text-lg text-center text-black"><strong>{{ item.name }}</strong></h2>
+                            <hr>
+                            <p class="text-left text-black-500 pt-2 font-semibold">Price: {{ item.price }} $</p>
+                            <p class="text-left text-black-500">Category: {{ item.category }}</p>
+                            <p class="text-left text-black-500 pb-2">Posted: {{ item.created_at }}</p>
+                            <hr>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+      </div>
+      <div class="full"></div>
+  </div>
+</div>
+
+
+
+<!-----------------------------------  LG AND XL RESPONSIVE DESIGN------------------------------------->
+<div class="hidden lg:block">
+  <div class="pb-6 grid grid-cols-5 gap-0 bg-gray-100" style="grid-template-columns: 3% 20% 3% 71% 3%;">
+      <div class="w-full"></div>
+      <div class="w-1/1">
+          <form method="get" class="my-6" action="{% url 'item:multiple_filter_items' %}">
+                <div class="grid grid-cols-2 gap-0" style="grid-template-columns: 80% 20%;">
+                    <input name="query_two_three" value="{{ query_two_three }}" class="w-full py-3 px-6 " style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;" type="text" " placeholder="Find anything...">
+                    <button id="test-button" type="submit"><i class="fa fa-search text-yellow-700 w-full hover:text-green-900 py-3 text-2xl bg-white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"></i></button>
+                </div>
+                <div class="grid grid-cols-2 gap-0">
+                    <a href="{% url 'item:multiple_filter_items' %}" class="mt-2 ml-0 w-full py-3 px-3 text-lg bg-red-200 hover:cursor-pointer hover:bg-red-700 hover:text-white text-black rounded-xl">Clear search</a>
+                    <a></a>
+                </div>
+          </form>
+
+          <hr class="my-6">
+
+          <div class="grid grid-cols-2 gap-0 my-6 " style="grid-template-columns: 50% 50%;">
+              <div class="w-full">
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-2">Filter Category</button>
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-2">Filter name</button>
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-2">Filter Price</button>
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-2">Filter Boutique</button>
+                  <button class="py-2 text-semibold bg-gray-200 w-full my-2">Filter Address</button>
+                  <button class=" w-full my-2"></button>
+                  <a href="{% url 'item:multiple_filter_items' %}" class=" ml-0 w-full py-3 px-6 text-lg bg-red-200 hover:cursor-pointer text-black rounded-xl hover:bg-red-700 hover:text-white">Clear filter</a>
+              </div>
+              <div class="w-full">
+
+                  <form method="get" id="search-form2-1" action="{% url 'item:multiple_filter_items' %}">
+                      <select name="category_id" style="width: 100%; border 1px solid black;" class="py-2 px-1 my-2">
+
+                        {% for category in categories %}
+                                    {% if category.id == category_id %}
+                          <option value="{{ category.id }}">{{ category.name }}</option>
+                                    {% endif %}
+                         {% endfor %}
+                        {% for category in categories %}
+                          <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                      </select>
+                      <input name="query_two_one" type="text" value="{{ query_two_one }}" style="width: 100%; border 1px solid black;" class="py-2 px-1 my-2" placeholder="eg. Shoes">
+                      <input name="query_two_two" type="text" value="{{ query_two_two }}" style="width: 100%; border 1px solid black;" class="py-2 px-1 my-2" placeholder="eg. 20 or 20-25">
+                      <input name="" type="text" value="" style="width: 100%; border 1px solid black;" class="py-2 px-1 my-2" placeholder="eg. 20 or 20-25">
+                      <input name="" type="text" value="" style="width: 100%; border 1px solid black;" class="py-2 px-1 mt-2 mb-4" placeholder="eg. 20 or 20-25">
+                      <button  type="submit" class="mt-2 ml-0 w-full py-2 px-2 text-lg bg-green-500 hover:cursor-pointer hover:bg-green-900 hover:text-white text-black rounded-xl">Filter</button>
+                  </form>
+              </div>
+          </div>
+
+          <hr class="my-3">
+
+          <p class=" font-semibold text-2xl mb-3">Categories List</p>
+
+          <div>
+              {% for category in categories %}
+                    <a href="{% url 'item:multiple_filter_items' %}?category_id={{ category.id }}">
+                       <div class=" grid grid-cols-2 gap-0 py-2 px-2 bg-gray-200 hover:bg-gray-400 {% if category.id == category_id %} bg-gray-700 text-white {% endif %}">
+                            <p>{{ category.name }}</p>
+                            <p class="text-right">{{ category.items.count }} items</p>
+                       </div>
+                    </a>
+              {% endfor %}
+          </div>
+      </div>
+      <div></div>
+      <!-------------------------------------CONTENT ITEMS LISTING------------------>
+      <div class="w-full">
+          <div class="grid grid-cols-3 gap-3" id="items-container">
+            {% for item in items %}
+                <div class="my-6" id="items-to-filter">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img src="{{ item.image.url }}" class="rounded-t-xl">
+                        </div>
+                        <div class="p-6 bg-teal-500 rounded-b-xl">
+                            <h2 class="text-xl text-center text-black"><strong>{{ item.name }}</strong></h2>
+                            <hr>
+                            <p class="text-black-500 pt-2 font-semibold">Price: {{ item.price }} $</p>
+                            <p class="text-black-500">Category: {{ item.category }}</p>
+                            <p class="text-black-500 pb-2">Posted: {{ item.created_at }}</p>
+                            <hr>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+      </div>
+      <div class="full"></div>
+  </div>
+</div>
+{% endblock %}
