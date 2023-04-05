@@ -127,3 +127,27 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Configuration files
+config.js
+secrets.yml
+
+# Build files
+*.class
+*.jar
+*.min.js
+
+# User-specific files
+.idea/
+.vscode/
+.DS_Store
+
+# Logs and backups
+*.backup
+*.tmp
+
+# Binary files
+*.png
+*.jpg
+*.gif
