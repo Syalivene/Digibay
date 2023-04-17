@@ -1,0 +1,110 @@
+{% extends 'app002/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="block lg:hidden">
+    <h1 class="my-3 text-xl text-center text-white py-2 border rounded-xl bg-gray-500" style="width: 90%; margin-left: 5%;">{{ title }}</h1>
+
+    <form method="post" action="." enctype="multipart/form-data" style="width: 90%; margin-left: 5%; margin-bottom: 20px; padding: 5px 25px; border-radius: 5px;" class="bg-gray-300">
+
+        {% if form.errors %}
+            <div class="mb-3 p-6 bg-red-200 rounded-lg">
+
+                <ul>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {% if field.name == "name" %}
+                                <li>Sorry dear! Correct the value you entered in field__<strong class="bg-red-500">Name</strong></li>
+                                <li>{{ field.errors|join:", " }}__choose a shorter name</li>
+                            {% elif field.name == "price" %}
+                                <li>Oops, please check your price. Field<strong class="bg-red-500"> Price</strong> takes only digits in USD.</li>
+                                <li>{{ field.errors|join:", " }} eg. 23.4_ not 23,4_ (and no $ or fc signs)</li>
+                            {% elif field.name == "price2" %}
+                                <li>Dear, check your price-2. Field<strong class="bg-red-500"> Price-2</strong> takes only digits in USD.</li>
+                                <li>{{ field.errors|join:", " }} eg. 23.4_ not 23,4_ (and no $ or fc signs)</li>
+                            {% else %}
+                                <li>Oops, you failed ! Correct the value you entered in field__<strong class="bg-red-500"> {{ field.label }}</strong></li>
+                                <li>{{ field.errors|join:", " }}</li>
+                            {% endif %}
+                            <hr><br>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <p class="bg-teal-500 text-center">Dear {{ request.user }}, Good luck !</p>
+            </div>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-500 rounded-xl">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+
+
+
+
+        {% csrf_token %}
+
+        <div class="space-y-4 ">
+            {{ form.as_p }}
+        </div>
+
+        <button class="mt-5 mb-3 ml-0 py-2 px-6 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+    </form>
+</div>
+
+
+<!-----------------------------------  LG AND XL RESPONSIVE DESIGN------------------------------------->
+<div class="hidden lg:block">
+    <h1 class="mb-6 mt-6 text-2xl text-center text-white py-4 border rounded-xl bg-gray-500" style="width: 50%; margin-left: 25%;">{{ title }}</h1>
+
+    <form method="post" action="." enctype="multipart/form-data" style="width: 50%; margin-left: 25%; margin-bottom: 50px; padding: 10px 50px; border-radius: 20px;" class="bg-gray-300">
+        {% if form.errors %}
+            <div class="mb-3 p-6 bg-red-200 rounded-xl">
+
+                <ul>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {% if field.name == "name" %}
+                                <li>Sorry dear! Correct the value you entered in field__<strong class="bg-red-500">Name</strong></li>
+                                <li>{{ field.errors|join:", " }}__choose a shorter name</li>
+                            {% elif field.name == "price" %}
+                                <li>Oops, please check your price. Field<strong class="bg-red-500"> Price</strong> takes only digits in USD.</li>
+                                <li>{{ field.errors|join:", " }} eg. 23.4_ not 23,4_ (and no $ or fc signs)</li>
+                            {% elif field.name == "price2" %}
+                                <li>Dear, check your price-2. Field<strong class="bg-red-500"> Price-2</strong> takes only digits in USD.</li>
+                                <li>{{ field.errors|join:", " }} eg. 23.4_ not 23,4_ (and no $ or fc signs)</li>
+                            {% else %}
+                                <li>Oops, you failed ! Correct the value you entered in field__<strong class="bg-red-500"> {{ field.label }}</strong></li>
+                                <li>{{ field.errors|join:", " }}</li>
+                            {% endif %}
+                            <hr><br>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+            </div>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-500 rounded-xl">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+
+
+
+
+        {% csrf_token %}
+
+        <div class="space-y-8 ">
+            {{ form.as_p }}
+        </div>
+
+        <button class="mt-6 mb-10 ml-50 py-4 px-6 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'app002/base.html' %}
+
+{% block title %}Dashboard index{% endblock %}
+{% block content %}
+<div class="block lg:hidden">
+    <div class="mt-0 px-1 py-3 bg-gray-100 rounded-lg">
+        <div class="mx-1 mb-3 mt-0 py-2 text-center border rounded-lg bg-gray-500 space-x-3">
+             <a class="text-xl text-center text-white py-2">My items</a>
+             <a href="{% url 'item:new' %}" class="my-2 px-3 py-2 text-lg bg-gray-700 font-semibold text-white rounded-lg hover:bg-gray-200 hover:text-black">Add new</a>
+             <a href="{% url 'dashboard:boutique_list' %}" class="my-2 px-3 py-2 text-lg bg-gray-700 font-semibold text-white rounded-xl hover:bg-gray-200 hover:text-black">Market</a>
+        </div>
+        <div class="grid grid-cols-2 gap-3 mx-3">
+            {% for item in items %}
+                <div class="bg-teal-500 rounded-b-lg rounded-t-lg">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img src="{{ item.image.url }}" class="rounded-t-lg" style="height: 35vw;">
+                        </div>
+                        <div class="py-2 ">
+                            <h2 class="text-lg text-center text-black"><strong>{{ item.name }}</strong></h2>
+                            <hr>
+                            <p class="px-1 text-black-500 pt-2 font-semibold">Price: {{ item.price }} $</p>
+                            <p class="px-1 text-black-500 text-sm">Category: {{ item.category }}</p>
+                            <p class="px-1 text-black-500 pb-1 text-sm">Posted: {{ item.created_at|date:'d/m/y' }}</p>
+                            <hr>
+                            <div class="space-x-2 pt-2 pb-2">
+                                <a href="{% url 'item:edit' item.id %}" class="py-1 px-3 width-3/4 text-lg font-semibold bg-gray-500 text-white rounded-lg hover:bg-gray-200 hover:text-black">Edit</a>
+                                <a href="{% url 'item:delete' item.id %}" class="py-1 px-1 width-3/4 text-lg font-semibold bg-red-500 text-white rounded-lg hover:bg-red-200 hover:text-black">Delete</a>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+<!-----------------------------------  LG AND XL RESPONSIVE DESIGN------------------------------------->
+<div class="hidden lg:block">
+    <div class="mt-0 px-3 py-6 bg-gray-100 rounded-xl">
+        <div class="mx-6 mb-8 mt-0 py-5 text-center border rounded-xl bg-gray-500 space-x-6">
+             <a class="text-2xl text-center text-white py-4">My items</a>
+             <a href="{% url 'item:new' %}" class="my-4 px-6 py-3 text-lg bg-gray-700 font-semibold text-white rounded-xl hover:bg-gray-200 hover:text-black">Add new item</a>
+             <a href="{% url 'dashboard:boutique_list' %}" class="my-4 px-6 py-3 text-lg bg-gray-700 font-semibold text-white rounded-xl hover:bg-gray-200 hover:text-black">Go to Market</a>
+        </div>
+        <div class="grid grid-cols-4 gap-3 mx-6">
+            {% for item in items %}
+                <div>
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img src="{{ item.image.url }}" class="rounded-t-xl" style="height: 20vw; overflow: hidden;">
+                        </div>
+                        <div class="py-6 px-6 bg-teal-500 rounded-b-xl">
+                            <h2 class="text-xl text-center text-black"><strong>{{ item.name }}</strong></h2>
+                            <hr>
+                            <p class="text-black-500 pt-2 font-semibold">Price: {{ item.price }} $</p>
+                            <p class="text-black-500">Category: {{ item.category }}</p>
+                            <p class="text-black-500 pb-2">Posted: {{ item.created_at }}</p>
+                            <hr><br>
+                            <div class="space-x-10">
+                                <a href="{% url 'item:edit' item.id %}" class="py-2 px-6 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-200 hover:text-black">Edit</a>
+                                <a href="{% url 'item:delete' item.id %}" class="py-2 px-4 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-200 hover:text-black">Delete</a>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

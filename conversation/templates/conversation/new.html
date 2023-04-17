@@ -1,0 +1,50 @@
+{% extends 'app002/base.html' %}
+
+{% block title %} New conversation {% endblock %}
+
+{% block content %}
+<div class="block lg:hidden">
+    <h1 class="mb-3 mt-3 text-xl text-center text-white py-2 border rounded-lg bg-gray-500" style="width: 80%; margin-left: 10%;">New conversation</h1>
+
+    <form method="post" action="." style="width: 80%; margin-left: 10%; margin-bottom: 20px; padding: 5px 5px; border-radius: 5px;" class="bg-gray-300">
+        {% csrf_token %}
+
+        <div class="space-y-2 ">
+            {{ form.as_p }}
+        </div>
+
+        {% if form.errors or form.non_field_errors %}
+        <div class="mb-1 p-3 bg-red-100 rounded-lg">
+            {% for field in form %}
+                {{ field.errors }}
+            {% endfor %}
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        <button class="mt-2 mb-10 ml-6 py-2 px-6 text-lg bg-teal-500 hover:bg-teal-700 rounded-lg text-white">Send</button>
+    </form>
+</div>
+
+<!-----------------------------------  LG AND XL RESPONSIVE DESIGN------------------------------------->
+<div class="hidden lg:block">
+    <h1 class="mb-6 mt-6 text-2xl text-center text-white py-4 border rounded-xl bg-gray-500" style="width: 50%; margin-left: 25%;">New conversation</h1>
+
+    <form method="post" action="." style="width: 50%; margin-left: 25%; margin-bottom: 50px; padding: 10px 50px; border-radius: 20px;" class="bg-gray-300">
+        {% csrf_token %}
+
+        <div class="space-y-4 ">
+            {{ form.as_p }}
+        </div>
+
+        {% if form.errors or form.non_field_errors %}
+        <div class="mb-3 p-6 bg-red-100 rounded-xl">
+            {% for field in form %}
+                {{ field.errors }}
+            {% endfor %}
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        <button class="mt-6 mb-10 ml-50 py-4 px-6 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
+    </form>
+</div>
+{% endblock %}

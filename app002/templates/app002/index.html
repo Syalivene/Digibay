@@ -1,0 +1,226 @@
+{% extends 'app002/base.html' %}
+
+{% block title %}welcome{% endblock %}
+{% block search %}
+<div class="block sm:block md:block lg:hidden xl:hidden">
+    <div class="grid grid-cols-3 gap-0 bg-gray-500" style="grid-template-columns: 5% 80% 15%;">
+         <div class="grid grid-cols-4 gap-0" style="grid-template-columns: 0% 0% 20% 80%;font-size: 20px;">
+              <div></div>
+              <div></div>
+              <div></div>
+         </div>
+
+        <div class="w-full py-10">
+               <form method="get" id="search-form" class="grid grid-cols-4 gap-0" style="grid-template-columns: 20% 65% 15% 0%;">
+                    <a href="{% url 'app002:index' %}" class="px-1 mr-3 hover:cursor-pointer text-center py-2 w-1/1 text-sm font-semibold text-black rounded-lg hover:bg-red-200 hover:text-black">Clear</a>
+                    <input name="query" class="py-2 px-2 w-1/1 text-left" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;" type="text" value="{{ query }}" placeholder="Find anything...">
+                    <button type="submit"><i class="fa fa-search text-yellow-700 w-1/1 ml-0 py-2 text-lg px-4 bg-white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"></i></button>
+                    <a></a>
+               </form>
+        </div>
+
+        <div class="grid grid-cols-4 gap-0" style="grid-template-columns: 60% 30% 0% 10%;">
+              <div></div>
+              <div class="w-1/1 pt-12 text-white">
+                    <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+                    <p style="font-size: 17px;"></p>
+              </div>
+              <div></div>
+              <div></div>
+        </div>
+    </div>
+
+</div>
+<!-----------------------------------  LG AND XL RESPONSIVE DESIGN------------------------------------->
+<div class="block lg:block xl:block hidden sm:hidden md:hidden">
+    <div class="grid grid-cols-3 gap-0 bg-gray-500" style="grid-template-columns: 30% 40% 30%;">
+         <div class="grid grid-cols-4 gap-0" style="grid-template-columns: 25% 25% 25% 25%;font-size: 20px;">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div class="w-1/1 pt-24 text-white">
+                    <a href="{% url 'item:multiple_filter_items' %}"><i class="fa-solid fa-bars"></i></a>
+                    <p style="font-size: 17px;">Menu</p>
+              </div>
+         </div>
+
+        <div class="w-full py-20">
+               <form method="get" id="search-form" class="grid grid-cols-4 gap-0" style="grid-template-columns: 25% 60% 10% 5%;">
+                    <a href="{% url 'app002:index' %}" class="px-1 mr-6 hover:cursor-pointer text-center py-4 w-1/1 text-lg bg-red-300 font-semibold text-black rounded-xl hover:bg-red-200 hover:text-black">Clear filter</a>
+                    <input name="query" class="py-4 px-4 w-1/1 text-left" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;" type="text" value="{{ query }}" placeholder="Find a chicken, a shoe or anything...">
+                    <button type="submit"><i class="fa fa-search text-yellow-700 w-1/1 ml-0 py-4 text-2xl px-4 bg-white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"></i></button>
+                    <a></a>
+               </form>
+        </div>
+
+        <div class="grid grid-cols-4 gap-0" style="grid-template-columns: 25% 25% 25% 25%; color: white;font-size: 20px;">
+              <div></div>
+              <div class="w-1/1 pt-24 text-white">
+                    <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+                    <p style="font-size: 17px;"></p>
+              </div>
+              <div></div>
+              <div></div>
+        </div>
+    </div>
+</div>
+<!-----------------------------------  ENDING ------------------------------------->
+<hr><hr>
+<div class="hidden lg:grid grid-cols-20 gap-0 bg-teal-500" style="grid-template-columns: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;">
+      <div class="w-1/1 py-4">
+            <a href="#"></a>
+            <p style="font-size: 17px; display: none;"></p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-mobile-screen"></i></a>
+            <p style="font-size: 17px; display: none;">Phones</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-laptop"></i></a>
+            <p style="font-size: 17px; display: none;">Laptops</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-shirt"></i></a>
+            <p style="font-size: 17px; display: none;">Clothes</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-shoe-prints"></i></a>
+            <p style="font-size: 17px; display: none;">Shoes</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-tractor"></i></a>
+            <p style="font-size: 17px; display: none;">Farmers</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-motorcycle"></i></a>
+            <p style="font-size: 17px; display: none;">Machines</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-utensils"></i></a>
+            <p style="font-size: 17px; display: none;">Restaurant</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-cat"></i></a>
+            <p style="font-size: 17px; display: none;">Animals</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-car"></i></a>
+            <p style="font-size: 17px; display: none;">Vehicle</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-sharp fa-solid fa-chair"></i></a>
+            <p style="font-size: 17px; display: none;">Furniture</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-user-doctor"></i></a>
+            <p style="font-size: 17px; display: none;">Doctor</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-book"></i></a>
+            <p style="font-size: 17px; display: none;">Books</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-house-user"></i></a>
+            <p style="font-size: 17px; display: none;">House for sale</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-person-dress"></i></a>
+            <p style="font-size: 17px; display: none;">Women dress</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+            <p style="font-size: 17px; display: none;">Scrap</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-handshake"></i></a>
+            <p style="font-size: 17px; display: none;">Charity</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-hotel"></i></a>
+            <p style="font-size: 17px; display: none;">Hotel</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-graduation-cap"></i></a>
+            <p style="font-size: 17px; display: none;">Specialist</p>
+      </div>
+      <div class="w-1/1 py-4">
+            <a href="#"><i class="fa-solid fa-dove"></i></a>
+            <p style="font-size: 17px; display: none;">Poultry</p>
+      </div>
+</div>
+
+{% endblock %}
+{% block content %}
+    <div class="mt-0 px-6 py-4 lg:py-6 bg-gray-100 rounded-xl">
+        <h2 class="mb-6 lg:mb-12 text-lg lg:text-2xl text-center text-white py-2 lg:py-4 border rounded-xl bg-green-900">Newest items</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+            {% for item in items %}
+                <div class="block lg:hidden">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img src="{{ item.image.url }}" class="rounded-t-lg" onload="resizeImage(this)">
+                        </div>
+                        <div class="p-6 bg-teal-500 rounded-b-xl">
+                            <div class="grid grid-cols-2 gap-0">
+                                <span class="text-black-500 text-left"><i class="fa-solid fa-location-dot"></i>Butembo</span>
+                                <span class="text-black-500 text-right">@{{ item.created_by }}</span>
+                            </div>
+                            <h2 class="text-xl text-center text-black"><strong>{{ item.name }}</strong></h2>
+                            <hr>
+                            <p class="text-black text-lg"><strong>Price:</strong> <strike>{{ item.price }} $</strike><strong>  {{ item.price2 }} $</strong></p>
+                            <p class="text-black lg:text-lg text-sm"><strong>Status: </strong>{{ item.get_status_display }}</p>
+                            <p class="text-black-500 lg:text-lg text-sm"><strong>Category: </strong>{{ item.category }}</p>
+                            <p class="text-black lg:text-lg text-sm"><strong>Stock size: </strong>{{ item.get_stock_display }}</p>
+                            <p class="text-sm lg:text-lg text-black"><strong>Posted: </strong>{{ item.created_at }}</p>
+                            <hr>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="hidden lg:block">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img src="{{ item.image.url }}" class="rounded-t-xl" onload="resizeImagelg(this)">
+                        </div>
+                        <div class="p-6 bg-teal-500 rounded-b-xl">
+                            <div class="grid grid-cols-2 gap-0">
+                                <span class="text-black-500 text-left"><i class="fa-solid fa-location-dot"></i>Butembo</span>
+                                <span class="text-black-500 text-right">@{{ item.created_by }}</span>
+                            </div>
+                            <h2 class="text-xl text-center text-black"><strong>{{ item.name }}</strong></h2>
+                            <hr>
+                            <p class="text-black text-lg"><strong>Price:</strong> <strike>{{ item.price }} $</strike><strong>  {{ item.price2 }} $</strong></p>
+                            <p class="text-black lg:text-lg text-sm"><strong>Status: </strong>{{ item.get_status_display }}</p>
+                            <p class="text-black-500 lg:text-lg text-sm"><strong>Category: </strong>{{ item.category }}</p>
+                            <p class="text-black lg:text-lg text-sm"><strong>Stock size: </strong>{{ item.get_stock_display }}</p>
+                            <p class="text-sm lg:text-lg text-black"><strong>Posted: </strong>{{ item.created_at }}</p>
+                            <hr>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+<!--------------------------------------   PAGINATOR ------------------------->
+
+
+<!--------------------------------------   CATEGORIES ------------------------>
+    <div class="mt-3 px-3 lg:px-6  py-3 lg:py-6 bg-gray-100 rounded-xl">
+        <h2 class="lg:mb-12 mb-6 text-lg lg:text-2xl text-center text-white py-2 lg:py-4 border rounded-xl bg-green-900">Categories</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
+            {% for category in categories %}
+               <div>
+                    <a href="{% url 'item:multiple_filter_items' %}?category_id={{ category.id }}">
+                        <div class="p-2 lg:p-6 bg-white hover:bg-teal-500 text-center rounded-b-xl">
+                            <h2 class="text-lg lg:text-2xl">{{ category.name }}</h2>
+                            <p class="text-gray-500 font-bold">| {{ category.items.count }} items |</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
