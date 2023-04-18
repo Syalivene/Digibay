@@ -1,0 +1,33 @@
+/* Style the dropdown button */
+.dropbtn {
+  color: white;
+  padding-top: 15px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  font-size: 18px;
+  margin-left: -100px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  background: black;
+  z-index: 10;
+}
+
+.dropdown-content div{
+    color: white;
+    padding: 10px 20px;
+}
+.dropdown-content div:hover{
+    background: gray;
+    color: black;
+}
+/* Show the dropdown content when the dropdown button is hovered over */
+.dropdown:hover .dropdown-content {
+  display: block;
+}

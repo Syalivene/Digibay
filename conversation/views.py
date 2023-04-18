@@ -48,11 +48,6 @@ def inbox(request):
     conversations = Conversation.objects.filter(members__in=[request.user.id], is_deleted=False)
     conversations_number_all = conversations.count()
 
-    for conversation in conversations:
-        conversation_messages_count = conversation.messages.all().count()
-        unread_messages = conversation.messages.filter(is_read=False).exclude(created_by=request.user)
-        unread_messages_count = unread_messages.count()
-
     messages = ConversationMessage.objects.filter(conversation__members__in=[request.user.id])
     messages_number_all = messages.count()
 
@@ -69,8 +64,6 @@ def inbox(request):
 
     return render(request, 'conversation/inbox.html', {
         'conversations': conversations,
-        'unread_messages_count': unread_messages_count,
-        'conversation_messages_count': conversation_messages_count,
         'conversations_number_all': conversations_number_all,
         'messages_number_received': messages_number_received,
         'messages_number_created': messages_number_created,

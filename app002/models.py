@@ -12,7 +12,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255, blank=True, null=True)
     second_name = models.CharField(max_length=255, blank=True, null=True)
-    address = models.CharField(choices=ADDRESS, default="Butembo")
+    address = models.CharField(choices=ADDRESS, max_length=255, default="Butembo")
     email = models.EmailField(max_length=255, blank=True, null=True)
     mobile = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=15, blank=True, null=True)
