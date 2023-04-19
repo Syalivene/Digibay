@@ -16,7 +16,7 @@
   border-top: 2px solid white;
   border-bottom: 2px solid white;
   background: black;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .dropdown-content div{

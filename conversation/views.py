@@ -54,8 +54,6 @@ def inbox(request):
     for message_r in messages_r:
         message_r.mark_as_delivered()
 
-
-
     return render(request, 'conversation/inbox.html', {
         'conversations': conversations,
         'conversations_number_all': conversations_number_all,
