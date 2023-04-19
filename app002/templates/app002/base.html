@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{% static 'css/project.css' %}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e2a3320fa1.js" crossorigin="anonymous"></script>
     <script src="{% static 'javascript/item.js' %}"></script>
     <script src="{% static 'javascript/app002.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app002.css' %}">
     <script src="{% static 'javascript/conversation.js' %}"></script>
+    <link rel="shortcut icon" href="#">
     <title>{% block title %}Base{% endblock %}</title>
 </head>
 <body>
@@ -37,15 +38,15 @@
                     </div>
                     <div class="dropdown-content">
                         <div><a href="{% url 'app002:profile' %}">Profile</a></div>
-                        <div><a href="#">Filters</a></div>
+                        <div><a href="{% url 'item:multiple_filter_items' %}">Filters</a></div>
                         <div><a href="#">Place order</a></div>
                         <div><a href="#">Donate</a></div>
-                        <div><a href="#">Dashboard</a></div>
+                        <div><a href="{% url 'dashboard:index' %}">Dashboard</a></div>
                         <div><a href="#">Premium</a></div>
                         <div><a href="#">Advertise</a></div>
                         <div><a href="#">Use notice</a></div>
                         <div><a href="#">Contact Us</a></div>
-                        <div><a href="#">Sign out</a></div>
+                        <div><a href="{% url 'app002:logout' %}">Sign out</a></div>
                     </div>
                 </div>
             </div>

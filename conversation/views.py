@@ -48,14 +48,8 @@ def inbox(request):
     conversations = Conversation.objects.filter(members__in=[request.user.id], is_deleted=False)
     conversations_number_all = conversations.count()
 
-    messages = ConversationMessage.objects.filter(conversation__members__in=[request.user.id])
-    messages_number_all = messages.count()
-
-    messages_c = messages.filter(created_by=request.user)
-    messages_number_created = messages_c.count()
-
+    messages = ConversationMessage.objects.filter(is_delivered=False)
     messages_r = messages.exclude(created_by=request.user)
-    messages_number_received = messages_r.count()
 
     for message_r in messages_r:
         message_r.mark_as_delivered()
@@ -65,9 +59,6 @@ def inbox(request):
     return render(request, 'conversation/inbox.html', {
         'conversations': conversations,
         'conversations_number_all': conversations_number_all,
-        'messages_number_received': messages_number_received,
-        'messages_number_created': messages_number_created,
-        'messages_number_all': messages_number_all,
     })
 
 
