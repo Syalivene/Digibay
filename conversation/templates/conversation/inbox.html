@@ -23,12 +23,12 @@
 
                               <div class="grid grid-cols-2 gap-0" style="grid-template-columns: 65% 35%;">
                                     <p class="text-sm">Chat <strong>{{ member.username }}</strong></p>
-                                {% if messages_number == 0 %}
+                                {% if conversation.unread_messages|length == 0 %}
                                     <a href="{% url 'conversation:detail' conversation.id %}"
                                     class="text-white text-center mb-1 px-1 bg-black text-sm rounded-lg hover:bg-yellow-200 hover:text-black hover:cursor-pointer">Click</a>
                                 {% else %}
                                     <a href="{% url 'conversation:detail' conversation.id %}"
-                                    class="text-white text-center mb-1 px-1 bg-black text-sm rounded-lg hover:bg-yellow-200 hover:text-black hover:cursor-pointer"><strong class="text-green-500 p-1 text-sm">{{ conversation.messages.count }}</strong>Click</a>
+                                    class="text-white text-center mb-1 px-1 bg-black text-sm rounded-lg hover:bg-yellow-200 hover:text-black hover:cursor-pointer"><strong class="text-green-500 p-1 text-sm">{{ conversation.unread_messages|length }}</strong>Click</a>
                                 {% endif %}
 
                               </div>

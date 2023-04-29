@@ -5,7 +5,6 @@ from .models import Conversation, ConversationMessage
 from .forms import ConversationMessageForm
 
 
-
 # Create your views here.
 @login_required
 def new_conversation(request, item_pk):
