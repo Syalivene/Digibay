@@ -2,34 +2,54 @@
 
 {% block title %}welcome{% endblock %}
 {% block search %}
-<div class="block sm:block md:block lg:hidden xl:hidden">
-    <div class="grid grid-cols-3 gap-0 bg-gray-500" style="grid-template-columns: 5% 80% 15%;">
-         <div class="grid grid-cols-4 gap-0" style="grid-template-columns: 0% 0% 20% 80%;font-size: 20px;">
-              <div></div>
-              <div></div>
-              <div></div>
-         </div>
-
-        <div class="w-full py-10">
-               <form method="get" id="search-form" class="grid grid-cols-4 gap-0" style="grid-template-columns: 20% 65% 15% 0%;">
-                    <a href="{% url 'app002:index' %}" class="px-1 mr-3 hover:cursor-pointer text-center py-2 w-1/1 text-sm font-semibold text-black rounded-lg hover:bg-red-200 hover:text-black">Clear</a>
-                    <input name="query" class="py-2 px-2 w-1/1 text-left" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;" type="text" value="{{ query }}" placeholder="Find anything...">
-                    <button type="submit"><i class="fa fa-search text-yellow-700 w-1/1 ml-0 py-3 text-lg px-4 bg-white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"></i></button>
-                    <a></a>
-               </form>
-        </div>
-
-        <div class="grid grid-cols-4 gap-0" style="grid-template-columns: 60% 30% 0% 10%;">
-              <div></div>
-              <div class="w-1/1 pt-12 text-white">
-                    <a href="#"><i class="fa-solid fa-location-dot"></i></a>
-                    <p style="font-size: 17px;"></p>
-              </div>
-              <div></div>
-              <div></div>
-        </div>
+<div class="block lg:hidden">
+    <div class="grid grid-cols-4 gap-0 bg-gray-500" style="grid-template-columns: 8% 12% 70% 10%;">
+       <div></div>
+       <div class="dropdown">
+            <div class="dropbtn my-10 text-center">
+                <i class="fa-solid fa-bars"></i>
+                <p class="text-sm">Menu</p>
+            </div>
+            <div class="dropdown-content">
+                <div><a href="{% url 'app002:profile' %}">Profile</a></div>
+                <div><a href="{% url 'app002:index' %}">Home</a></div>
+                <div><a href="{% url 'item:multiple_filter_items' %}">Filters</a></div>
+                <div><a href="#">Place order</a></div>
+                <div><a href="#">Donate</a></div>
+                <div><a href="{% url 'dashboard:index' %}">Dashboard</a></div>
+                <div><a href="{% url 'dashboard:boutique_list' %}">Boutique</a></div>
+                <div><a href="#">Premium</a></div>
+                <div><a href="#">Advertise</a></div>
+                <div><a href="#">Use notice</a></div>
+                <div><a href="#">Contact</a></div>
+                <div><a href="{% url 'app002:logout' %}">Sign out</a></div>
+            </div>
+       </div>
+       <form method="get" id="search-form" class="grid grid-cols-2 gap-0 my-10 py-3 px-4 text-lg bg-white rounded-lg" style="grid-template-columns: 80% 20%;">
+            <input name="query" class="w-1/1 text-left" type="text" value="{{ query }}" placeholder="Find anything...">
+            <button type="submit"><i class="fa fa-search text-yellow-700 w-1/1"></i></button>
+       </form>
+       <div></div>
     </div>
-
+    <div class="grid-cols-17 gap-0 text-teal-500 bg-gray-500 py-3 text-center" style="grid-template-columns: 5% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 5%;">
+        <a></a>
+        <a href="#"><i class="fa-solid fa-mobile-screen"></i></a>
+        <a href="#"><i class="fa-solid fa-laptop"></i></a>
+        <a href="#"><i class="fa-solid fa-shirt"></i></a>
+        <a href="#"><i class="fa-solid fa-shoe-prints"></i></a>
+        <a href="#"><i class="fa-solid fa-motorcycle"></i></a>
+        <a href="#"><i class="fa-solid fa-cat"></i></a>
+        <a href="#"><i class="fa-solid fa-car"></i></a>
+        <a href="#"><i class="fa-sharp fa-solid fa-chair"></i></a>
+        <a href="#"><i class="fa-solid fa-user-doctor"></i></a>
+        <a href="#"><i class="fa-solid fa-book"></i></a>
+        <a href="#"><i class="fa-solid fa-house-user"></i></a>
+        <a href="#"><i class="fa-solid fa-person-dress"></i></a>
+        <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+        <a href="#"><i class="fa-solid fa-handshake"></i></a>
+        <a href="#"><i class="fa-solid fa-hotel"></i></a>
+        <a></a>
+    </div>
 </div>
 <!-----------------------------------  LG AND XL RESPONSIVE DESIGN------------------------------------->
 <div class="block lg:block xl:block hidden sm:hidden md:hidden">
