@@ -158,22 +158,20 @@
             {% for item in items %}
                 <div class="block lg:hidden">
                     <a href="{% url 'item:detail' item.id %}">
-                        <div>
-                            <img src="{{ item.image.url }}" class="rounded-t-lg" onload="resizeImage(this)">
-                        </div>
-                        <div class="p-6 bg-teal-500 rounded-b-xl">
-                            <div class="grid grid-cols-2 gap-0">
-                                <span class="text-black-500 text-left"><i class="fa-solid fa-location-dot"></i>Butembo</span>
-                                <span class="text-black-500 text-right">@{{ item.created_by }}</span>
-                            </div>
-                            <h2 class="text-xl text-center text-black"><strong>{{ item.name }}</strong></h2>
-                            <hr>
-                            <p class="text-black text-lg"><strong>Price:</strong> <strike>{{ item.price }} $</strike><strong>  {{ item.price2 }} $</strong></p>
-                            <p class="text-black lg:text-lg text-sm"><strong>Status: </strong>{{ item.get_status_display }}</p>
-                            <p class="text-black-500 lg:text-lg text-sm"><strong>Category: </strong>{{ item.category }}</p>
-                            <p class="text-black lg:text-lg text-sm"><strong>Stock size: </strong>{{ item.get_stock_display }}</p>
-                            <p class="text-sm lg:text-lg text-black"><strong>Posted: </strong>{{ item.created_at }}</p>
-                            <hr>
+                        <div class="grid grid-cols-2 rounded-lg" style="grid-template-columns: 50% 50%; background-color: rgb(15, 15, 15);">
+                              <div>
+                                    <img src="{{ item.image.url }}" class="rounded-lg p-1" style="height: 37vw; width: 45vw;">
+                              </div>
+                              <div class="p-1" style="height: 35vw; color: rgb(20, 155, 49);">
+                                    <p class="text-lg text-center"><strike>{{ item.price }}</strike><strong>  {{ item.price2 }} $</strong></p>
+                                    <hr>
+                                    <p class="text-sm"><strong>Product:</strong> {{ item.name }}</p>
+                                    <p class="lg:text-lg text-sm"><strong>Status: </strong>{{ item.get_status_display }}</p>
+                                    <p class="lg:text-lg text-sm"><strong>Stock: </strong>{{ item.get_stock_display }}</p>
+                                    <p class="text-sm lg:text-lg"><strong>Posted: </strong>{{ item.created_at|date:'d/m/y'}}</p>
+                                    <hr>
+                                    <p class="text-center text-sm"><i class="fa-solid fa-location-dot"></i>Butembo</p>
+                              </div>
                         </div>
                     </a>
                 </div>

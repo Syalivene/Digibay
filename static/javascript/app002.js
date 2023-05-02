@@ -8,8 +8,7 @@ function resizeImagelg(image) {
 
 function resizeImage(image) {
   if (image.naturalHeight > image.naturalWidth) {
-    image.style.width = "90vw";
-    image.style.height = "75vw";
+    image.style.height = "35vw";
   }
 }
 

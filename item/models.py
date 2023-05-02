@@ -10,17 +10,17 @@ import io
 
 
 STATUS = (
-    (0, "Brand new item"),
-    (1, "Used item"),
+    (0, "Brand new"),
+    (1, "Used"),
     (2, "Other"),
 )
 
 STOCK = (
-    (0, "Single (1 item)"),
-    (1, "Medium (2-10 items)"),
-    (2, "Large (11-100 items)"),
-    (3, "Extra-large (101-1000 items)"),
-    (4, "Unlimited (>1000 items)")
+    (0, "Single"),
+    (1, "Medium"),
+    (2, "Large"),
+    (3, "Extra-large"),
+    (4, "Unlimited")
 )
 
 
