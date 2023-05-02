@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9&&p316q@q0mt2tl^y8vdg*k_j4&jek29hzs2&rok*h8kf8h+7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['syalivene.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -76,8 +76,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'digibay.wsgi.application'
 
+WSGI_APPLICATION = 'digibay.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -124,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -133,10 +133,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = '/home/syalivene/digibay/media'
-MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/syalivene/digibay/static'
+STATIC_ROOT = 'C:/Users/HP/Desktop/project/digibay/static'
 STATIC_URL = '/static/'
+MEDIA_ROOT = 'C:/Users/HP/Desktop/project/digibay/media'
+MEDIA_URL = '/media/'
+
 
 
 

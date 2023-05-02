@@ -1,4 +1,5 @@
 from conversation.models import Conversation
+from conversation.models import ConversationMessage
 
 
 def messages_number(request):
@@ -13,3 +14,4 @@ def messages_number(request):
         messages_number = 0
 
     return {'messages_number': messages_number}
+

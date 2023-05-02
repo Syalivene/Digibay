@@ -10,7 +10,7 @@ class Conversation(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
-    def unread_messages(self):
+    def unread_messages(self): 
         return self.messages.filter(is_read=False)
 
     class Meta:

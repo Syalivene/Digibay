@@ -27,10 +27,18 @@
                                     <a href="{% url 'conversation:detail' conversation.id %}"
                                     class="text-white text-center mb-1 px-1 bg-black text-sm rounded-lg hover:bg-yellow-200 hover:text-black hover:cursor-pointer">Click</a>
                                 {% else %}
-                                    <a href="{% url 'conversation:detail' conversation.id %}"
-                                    class="text-white text-center mb-1 px-1 bg-black text-sm rounded-lg hover:bg-yellow-200 hover:text-black hover:cursor-pointer"><strong class="text-green-500 p-1 text-sm">{{ conversation.unread_messages|length }}</strong>Click</a>
+                                    {% for message in conversation.unread_messages %}
+                                        {% if message.created_by == request.user %}
+                                            <a href="{% url 'conversation:detail' conversation.id %}"
+                                            class="text-white text-center mb-1 px-1 bg-black text-sm rounded-lg hover:bg-yellow-200 hover:text-black hover:cursor-pointer">Click</a>
+                                        {% else %}
+                                            <a href="{% url 'conversation:detail' conversation.id %}"
+                                            class="text-white text-center mb-1 px-1 bg-black text-sm rounded-lg hover:bg-yellow-200 hover:text-black hover:cursor-pointer"><strong class="text-green-500 p-1 text-sm">{{ conversation.unread_messages|length }}</strong>Click</a>                                      
+                                        {% endif %}
+                                    {{ "<!--" }}
+                                    {% endfor %}
+                                    {{ "-->" }}                             
                                 {% endif %}
-
                               </div>
                               <hr>
                               <div class="grid grid-cols-2 gap-0" style="grid-template-columns: 60% 40%;">
@@ -43,7 +51,7 @@
                     </div>
                 </div>
             </a>
-             {% endfor %}
+            {% endfor %}
          </div>
          <div class="w-full"></div>
      </div>
